@@ -56,6 +56,7 @@ contract TokenggAVAXTest is BaseTest, IWithdrawer {
 		vm.stopPrank();
 
 		// Expect exchange rate to be 1:1 on initial deposit.
+		// 份额与质押量 1比1
 		assertEq(aliceUnderlyingAmount, aliceShareAmount);
 		assertEq(ggAVAX.previewWithdraw(aliceShareAmount), aliceUnderlyingAmount);
 		assertEq(ggAVAX.previewDeposit(aliceUnderlyingAmount), aliceShareAmount);

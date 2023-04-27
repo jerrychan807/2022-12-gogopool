@@ -531,6 +531,7 @@ contract MinipoolManager is Base, ReentrancyGuard, IWithdrawer {
 		setUint(keccak256(abi.encodePacked("minipool.item", minipoolIndex, ".status")), uint256(MinipoolStatus.Finished));
 		emit MinipoolStatusChanged(nodeID, MinipoolStatus.Finished);
 	}
+	}
 
 	//
 	// VIEW FUNCTIONS
