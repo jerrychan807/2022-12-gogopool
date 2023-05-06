@@ -50,6 +50,7 @@ contract RewardsPool is Base {
 	}
 
 	/// @notice Inflation intervals that have elapsed since inflation was last calculated
+	// 自上次计算通货膨胀以来所经过的通货膨胀时间间隔
 	/// @return Number of intervals since last inflation cycle (0, 1, 2, etc)
 	function getInflationIntervalsElapsed() public view returns (uint256) {
 		ProtocolDAO dao = ProtocolDAO(getContractAddress("ProtocolDAO"));

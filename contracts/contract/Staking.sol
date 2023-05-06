@@ -16,7 +16,7 @@ import {SafeTransferLib} from "@rari-capital/solmate/src/utils/SafeTransferLib.s
 	Data Storage Schema
 	A "staker" is a user of the protocol who stakes GGP into this contract
 
-	staker.count = Starts at 0 and counts up by 1 after a staker is added.
+	staker.count = Starts at 0 and counts up by 1 after a staker is added. // 递增,质押者数量
 
 	staker.index<stakerAddr> = <index> of stakerAddr
 	staker.item<index>.stakerAddr = wallet address of staker, used as primary key

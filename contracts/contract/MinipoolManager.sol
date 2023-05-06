@@ -351,12 +351,12 @@ contract MinipoolManager is Base, ReentrancyGuard, IWithdrawer {
 		bytes32 txID,
 		uint256 startTime
 	) external {
-		int256 minipoolIndex = onlyValidMultisig(nodeID);
+		int256 minipoolIndex = onlyValidMultisig(nodeID); // 获取miniPool索引值
 		requireValidStateTransition(minipoolIndex, MinipoolStatus.Staking);
 		if (startTime > block.timestamp) {
 			revert InvalidStartTime();
 		}
-
+		// 根据miniPool索引设置几个值 status、txID、startTime
 		setUint(keccak256(abi.encodePacked("minipool.item", minipoolIndex, ".status")), uint256(MinipoolStatus.Staking));
 		setBytes32(keccak256(abi.encodePacked("minipool.item", minipoolIndex, ".txID")), txID);
 		setUint(keccak256(abi.encodePacked("minipool.item", minipoolIndex, ".startTime")), startTime);
@@ -442,7 +442,7 @@ contract MinipoolManager is Base, ReentrancyGuard, IWithdrawer {
 	/// @notice Re-stake a minipool, compounding all rewards recvd
 	/// @param nodeID 20-byte Avalanche node ID
 	function recreateMinipool(address nodeID) external whenNotPaused {
-		int256 minipoolIndex = onlyValidMultisig(nodeID);
+		int256 minipoolIndex = onlyValidMultisig(nodeID); // 
 		requireValidStateTransition(minipoolIndex, MinipoolStatus.Prelaunch);
 		Minipool memory mp = getMinipool(minipoolIndex);
 		// Compound the avax plus rewards
